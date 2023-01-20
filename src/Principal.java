@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 public class Principal {
     public static void main(String[] args) throws Exception {
 
-        Funciones monedas = new Funciones();
+        FuncionCotizacion monedas = new FuncionCotizacion();
         
         String opciones = (JOptionPane.showInputDialog(
                 null,

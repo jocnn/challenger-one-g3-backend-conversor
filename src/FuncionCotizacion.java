@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class Funciones {
+public class FuncionCotizacion {
 	ConvertirMonedas monedas = new ConvertirMonedas();
 
 	public void ConvertirMonedas(double dato) {
