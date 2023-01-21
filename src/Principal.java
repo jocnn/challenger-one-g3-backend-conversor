@@ -2,8 +2,10 @@ import javax.swing.JOptionPane;
 
 public class Principal {
     public static void main(String[] args) throws Exception {
-
+        
+        int resp = 0;
         FuncionCotizacion monedas = new FuncionCotizacion();
+        FuncionTemperatura temperatura = new FuncionTemperatura();
         
         String opciones = (JOptionPane.showInputDialog(
                 null,
@@ -23,7 +25,7 @@ public class Principal {
                 
                 monedas.ConvertirMonedas(montoDouble);
                 
-                int resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+                resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
                 if (JOptionPane.OK_OPTION == resp) {
                     System.out.println("Selecciono opción afirmativa");
                 } else {
@@ -31,6 +33,18 @@ public class Principal {
                 }
                 break;
             case "Conversor de Temperatura":
+                String temperaturaAConvertir = JOptionPane
+                        .showInputDialog("Ingresa el valor de la temperatura que deseas convertir");
+                double temperaturaDouble = Double.parseDouble(temperaturaAConvertir);
+                
+                temperatura.ConvertirTemperatura(temperaturaDouble);
+                
+                resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+                if (JOptionPane.OK_OPTION == resp) {
+                    System.out.println("Selecciono opción afirmativa");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Programa terminado");
+                }
                 break;
         }
     }
