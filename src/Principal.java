@@ -21,31 +21,53 @@ public class Principal {
         switch (opciones) {
             case "Conversor de Moneda":
                 String ingresarMonto = JOptionPane.showInputDialog("Ingrese la cantidad de dinero para convertir: ");
-                double montoDouble = Double.parseDouble(ingresarMonto);
                 
-                monedas.ConvertirMonedas(montoDouble);
-                
-                resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
-                if (JOptionPane.OK_OPTION == resp) {
-                    System.out.println("Selecciono opción afirmativa");
+                if (ValidarInput(ingresarMonto) == true) {
+                    double montoDouble = Double.parseDouble(ingresarMonto);
+                    
+                    monedas.ConvertirMonedas(montoDouble);
+                    
+                    resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+                    if (JOptionPane.OK_OPTION == resp) {
+                        System.out.println("Selecciono opción afirmativa");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Programa terminado");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Programa terminado");
+                    JOptionPane.showMessageDialog(null, "Valor invalido");
                 }
                 break;
             case "Conversor de Temperatura":
                 String temperaturaAConvertir = JOptionPane
                         .showInputDialog("Ingresa el valor de la temperatura que deseas convertir");
-                double temperaturaDouble = Double.parseDouble(temperaturaAConvertir);
                 
-                temperatura.ConvertirTemperatura(temperaturaDouble);
-                
-                resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
-                if (JOptionPane.OK_OPTION == resp) {
-                    System.out.println("Selecciono opción afirmativa");
+                if (ValidarInput(temperaturaAConvertir) == true) {
+                    double temperaturaDouble = Double.parseDouble(temperaturaAConvertir);
+                    
+                    temperatura.ConvertirTemperatura(temperaturaDouble);
+                    
+                    resp = JOptionPane.showConfirmDialog(null, "¿Deseas realizar otra conversión?");
+                    if (JOptionPane.OK_OPTION == resp) {
+                        System.out.println("Selecciono opción afirmativa");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Programa terminado");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Programa terminado");
+                    JOptionPane.showMessageDialog(null, "Valor invalido");
                 }
                 break;
         }
+    }
+
+    public static boolean ValidarInput(String input) {
+        try {
+            double x = Double.parseDouble(input);
+            if (x >= 0 || x < 0) {
+                return true;
+            }
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return false;
     }
 }
